@@ -1,21 +1,13 @@
-# Final-TeVeO
-
-Repositorio de plantilla para el proyecto final del curso 2023-2024.
-
-Para entregar el proyecto depositado en este repositorio, leer con atención el apartado sobre la entrega del enunciado del ejercicio. Antes de entregar, rellenar el texto que viene a continuación según indica dicho enunciado, y borrar toda esta primera parte.
-
-<<<<<BORRAR HASTA AQUí, INCLIUDA ESTA LÍNEA>>>>>
-
-# ENTREGA CONVOCATORIA XXX
+# ENTREGA CONVOCATORIA MAYO
 
 # ENTREGA DE PRÁCTICA
 
 ## Datos
 
-* Nombre:
-* Titulación:
-* Cuenta en laboratorios:
-* Cuenta URJC:
+* Nombre: Jose Luis Tamayo Díez
+* Titulación: Ingeniería Telemática
+* Cuenta en laboratorios: jltamayo
+* Cuenta URJC: jl.tamayo.2018
 * Video básico (url):
 * Video parte opcional (url):
 * Despliegue (url):
