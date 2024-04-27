@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TeVeO - Página Principal</title>
-</head>
-<body>
-    <h1>Bienvenido a TeVeO</h1>
-    <p>Esta es la página principal</p></p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>TeVeO - Página Principal</title>
+    </head>
+    <body>
+        <h1>Bienvenido a TeVeO</h1>
+        <p>Esta es la página principal</p>
+        <p>Se ofrecerá un listado de los comentarios puestos, organizados de más nuevos a más viejos, y opcionalmente
+        paginado. Para cada comentario se mostrará el identificador de la cámara a la que se refiere (que será un enlace a la página
+        de la cámara), la fecha del comentario, el texto del comentario, y la imagen de la cámara en el momento en que se puso el
+        mensaje.</p>
+
+        {% for comment in comments %}
+            <br>
+            <b>Comentario nuevo.</b>
+
+            Identificador de la cámara: {{ comment.camera_id }}<br>
+            Fecha del comentario: {{ comment.date }}<br>
+            Texto del comentario: {{ comment.text }}<br>
+
+            <br>
+        {% endfor %}
+    </body>
 </html>
