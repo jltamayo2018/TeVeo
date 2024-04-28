@@ -1,15 +1,26 @@
 from django.db import models
 
 # Create your models here.
+
+
+class DataSource(models.Model):
+    name = models.CharField(max_length=200)
+    file_path = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Camera(models.Model):
     id = models.CharField(max_length = 200, primary_key=True)
     name = models.CharField(max_length = 200, default="")
     latitude = models.CharField(max_length = 200, default="", null=True, blank=True)
     longitude = models.CharField(max_length = 200, default="", null=True, blank=True)
-    # message = models.CharField(max_length = 200, default="")
+    num_comements = models.IntegerField(default=0)
+    data_source = models.ForeignKey(DataSource, on_delete=models.CASCADE, null=True, blank=True)
 
-    #def __str__(self):
-    #    return self.id
+    def __str__(self):
+        return self.name
 
 
 class Comment(models.Model):

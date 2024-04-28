@@ -5,11 +5,24 @@
 </head>
 <body>
     <h1>Página de cámaras</h1>
-    <ul>
-        {% for camera in cameras %}
-            <p>Esto es una cámara</p>
-        {% endfor %}
-    </ul>
+
+    <h2>Fuentes de Datos</h2>
+    {% for source in sources %}
+        <form action="" method="POST">
+            <p>Listado: {{ source }}</p>
+            <button type="submit" name="source" value="{{ source }}">Descargar {{ source }}</button>
+        </form>
+        <hr>
+    {% endfor %}
+
+
+    <h2>Listado de cámaras</h2>
+    {% for camera in cameras %}
+        <p>Esto es una cámara</p>
+        <p>id: {{ camera.id }} </p>
+        <p>name: {{ camera.name }}</p>
+        <hr>
+    {% endfor %}
 
 </body>
 </html>
