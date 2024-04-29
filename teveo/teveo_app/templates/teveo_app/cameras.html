@@ -18,9 +18,11 @@
 
     <h2>Listado de cámaras</h2>
     {% for camera in cameras %}
-        <p>Esto es una cámara</p>
-        <p>id: {{ camera.id }} </p>
-        <p>name: {{ camera.name }}</p>
+        <p>ID: {{ camera.id }} </p>
+        <p>Mostrar enlace a cámara</p>
+        <p>Mostrar enlace a página dinámica</p>
+        <p>Name: {{ camera.name }}</p>
+        <p>número de comentarios: {{ camera.num_comments }}</p>
         <hr>
     {% endfor %}
 

@@ -7,20 +7,18 @@
     <body>
         <h1>Bienvenido a TeVeO</h1>
         <p>Esta es la página principal</p>
-        <p>Se ofrecerá un listado de los comentarios puestos, organizados de más nuevos a más viejos, y opcionalmente
-        paginado. Para cada comentario se mostrará el identificador de la cámara a la que se refiere (que será un enlace a la página
-        de la cámara), la fecha del comentario, el texto del comentario, y la imagen de la cámara en el momento en que se puso el
-        mensaje.</p>
+        <p>Ordenar comentarios de + nuevos a + viejos</p>
 
         {% for comment in comments %}
             <br>
             <b>Comentario nuevo.</b>
 
-            Identificador de la cámara: {{ comment.camera_id }}<br>
-            Fecha del comentario: {{ comment.date }}<br>
-            Texto del comentario: {{ comment.text }}<br>
+            <p>Identificador de la cámara: {{ comment.camera_id }}</p>
+            <p>Fecha del comentario: {{ comment.date }}</p>
+            <p>Texto del comentario: {{ comment.text }}</p>
+            <p>Imagen de la camara en el momento que se puso el mensaje</p>
+            <hr>
 
-            <br>
         {% endfor %}
     </body>
 </html>

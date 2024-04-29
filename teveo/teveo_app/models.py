@@ -16,7 +16,7 @@ class Camera(models.Model):
     name = models.CharField(max_length = 200, default="")
     latitude = models.CharField(max_length = 200, default="", null=True, blank=True)
     longitude = models.CharField(max_length = 200, default="", null=True, blank=True)
-    num_comements = models.IntegerField(default=0)
+    num_comments = models.IntegerField(default=0)
     data_source = models.ForeignKey(DataSource, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

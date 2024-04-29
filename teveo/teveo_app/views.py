@@ -23,6 +23,12 @@ def index(request):
 
     return render(request, "teveo_app/index.html", context)
 
+
+def comentario(request):
+    print("FUNCIONA COMENTARIO")
+    return render(request, "teveo_app/comentario.html", {})
+
+
 @csrf_exempt
 def cameras(request):
     print("FUNCIONA CAMARAS")
@@ -47,9 +53,22 @@ def cameras(request):
     return render(request, "teveo_app/cameras.html", context)
 
 
-def comentario(request):
-    print("FUNCIONA COMENTARIO")
-    return render(request, "teveo_app/comentario.html", {})
+def camera_detail(request, id_camera):
+    print("FUNCIONA CAMERA_DETAIL")
+    print(id_camera)
+
+    try:
+        camera = Camera.objects.get(id=id_camera)
+        print(camera)
+    except Camera.DoesNotExist:
+        print("No existe la cámara")
+        return HttpResponse("No existe la cámara")
+
+    context = {
+        'camera': camera,
+    }
+    return render(request, "teveo_app/camera_detail.html", context)
+
 
 """
 def decide_option(request, comentario_camaras):
