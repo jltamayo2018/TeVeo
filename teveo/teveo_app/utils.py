@@ -11,6 +11,7 @@ def load_cameras_from_xml(data_source_path):
     if root.tag == "camaras":  # Formato del primer archivo XML (listado1.xml)
         for camara in root.findall("camara"):
             camera_id = camara.find("id").text
+            img_camera = camara.find("src").text
             name = camara.find("lugar").text
             coordinates = camara.find("coordenadas").text.split(",")
             latitude = float(coordinates[1])
@@ -20,6 +21,7 @@ def load_cameras_from_xml(data_source_path):
             camera, created = Camera.objects.update_or_create(
                 id=camera_id,
                 defaults={
+                    "img_camera": img_camera,
                     "name": name,
                     "latitude": latitude,
                     "longitude": longitude,
@@ -30,6 +32,7 @@ def load_cameras_from_xml(data_source_path):
     elif root.tag == "list":  # Formato del segundo archivo XML (listado2.xml)
         for cam in root.findall("cam"):
             camera_id = cam.get("id")
+            img_camera = cam.find("url").text
             info = cam.find("info").text
             latitude = float(cam.find("place/latitude").text)
             longitude = float(cam.find("place/longitude").text)
@@ -38,6 +41,7 @@ def load_cameras_from_xml(data_source_path):
             camera, created = Camera.objects.update_or_create(
                 id=camera_id,
                 defaults={
+                    "img_camera": img_camera,
                     "name": info,
                     "latitude": latitude,
                     "longitude": longitude,

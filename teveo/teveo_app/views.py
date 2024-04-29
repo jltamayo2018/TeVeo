@@ -16,7 +16,7 @@ DB_SOURCES = [
 # Create your views here.
 def index(request):
     print("FUNCIONA INDEX")
-    comments = Comment.objects.all()
+    comments = Comment.objects.all().order_by('-date')
     context = {
         'comments': comments,
     }
@@ -37,15 +37,12 @@ def cameras(request):
         print("ENTRO A POST")
         source = request.POST["source"]
         print(source)
-        # debo obtener el path del archivo
-        # print(BASE_DIR)
         source_path = os.path.join(BASE_DIR, "teveo_app/data_sources", source)
         print(source_path)
         cameras = utils.load_cameras_from_xml(source_path)
         print("CAMARITAS: ", cameras)
 
-    camaras = Camera.objects.all()
-    # Esta vista recibe el parámetro 'camaras'
+    camaras = Camera.objects.all().order_by('-num_comments')
     context = {
         'sources': DB_SOURCES,
         'cameras': camaras,

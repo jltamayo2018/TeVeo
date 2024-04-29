@@ -16,6 +16,11 @@
         <p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
         <p>Mostrar enlace a la página dinámica de la cámara</p>
         <p>Mostrar imagen actual de la cámara</p>
+        {% if camera.img_camera %}
+            <img src="{{ camera.img_camera }}" alt="Imagen de la cámara">
+        {% else %}
+            <p>No hay imagen disponible</p>
+        {% endif %}
         <p>Enlace para pasar a la página que permite escribir un comentario para la cámara</p>
         <p>Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
     </body>
