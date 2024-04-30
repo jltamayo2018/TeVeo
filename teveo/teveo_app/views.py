@@ -65,18 +65,3 @@ def camera_detail(request, id_camera):
         'camera': camera,
     }
     return render(request, "teveo_app/camera_detail.html", context)
-
-
-"""
-def decide_option(request, comentario_camaras):
-    print("FUNCIONA DECIDE_OPTION")
-    if comentario_camaras == "camaras":
-        print("ENTRO A CAMARAS")
-        return cameras(request)
-    elif comentario_camaras == "comentario":
-        print("ENTRO A COMENTARIO")
-        return comentario(request)
-    else:
-        print("ENTRO A ERROR")
-        return HttpResponse("Error")
-"""
