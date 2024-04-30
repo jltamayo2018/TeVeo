@@ -11,6 +11,7 @@ BASE_DIR = settings.BASE_DIR
 DB_SOURCES = [
     "listado1.xml",
     "listado2.xml",
+    "CCTV.kml",
 ]
 
 # Create your views here.
