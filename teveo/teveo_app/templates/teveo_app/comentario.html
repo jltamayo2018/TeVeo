@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Página de comentario</title>
+    <title>Página para escribir un comentario</title>
+    <style>
+        img {
+            width: 50%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Página de comentario</h1>
-    <p>Mostrar indo de la cámara</p>
-    <p>Mostrar img de la camara en ese momento</p>
-    <p>mostrar fecha y hora</p>
-    <form>
-        <p>Estas en un formulario</p>
+    <h1>Escribir un comentario para {{ camera.name }}</h1>
+    <p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
+    {% if camera.img_camera %}
+            <img src="{{ camera.img_camera }}" alt="Imagen de la cámara">
+        {% else %}
+            <p>No hay imagen disponible</p>
+        {% endif %}
+    <p>Fecha y hora actuales: {{ current_date }}</p>
+    <form action="" method="POST">
+        <label for="comment_text">Comentario:</label>
+        <input type="hidden" name="id_camera" value="{{ camera.id }}">
+        <input type="text" name="comment_text" id="comment_text" maxlength="200" required>
         <input type="submit" value="Enviar comentario">
     </form>
 

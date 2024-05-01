@@ -29,3 +29,6 @@ class Comment(models.Model):
     date = models.DateTimeField() #(auto_now_add=True)
     text = models.CharField(max_length=200, default="")
     #img_camera = models.ImageField(upload_to='images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.text
