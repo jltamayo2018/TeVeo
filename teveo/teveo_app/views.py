@@ -103,3 +103,17 @@ def camera_detail(request, id_camera):
         'camera': camera,
     }
     return render(request, "teveo_app/camera_detail.html", context)
+
+
+def camera_dyn(request, id_camera):
+    print("FUNCIONA CAMERA_DYN")
+    print(id_camera)
+
+    try:
+        camera = Camera.objects.get(id=id_camera)
+        print(camera)
+    except Camera.DoesNotExist:
+        print("No existe la cámara")
+        return HttpResponse("No existe la cámara")
+
+    return HttpResponse("KLK")
