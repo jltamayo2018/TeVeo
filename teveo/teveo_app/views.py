@@ -116,4 +116,8 @@ def camera_dyn(request, id_camera):
         print("No existe la cámara")
         return HttpResponse("No existe la cámara")
 
-    return HttpResponse("KLK")
+    context = {
+        'camera': camera,
+    }
+
+    return render(request, "teveo_app/camera_detail_dyn.html", context)

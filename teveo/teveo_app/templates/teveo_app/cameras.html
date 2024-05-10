@@ -21,7 +21,7 @@
         <p>ID: {{ camera.id }} </p>
         <p>URL de la imagen {{ camera.img_camera }}</p>
         <a href="{% url 'camera_detail' camera.id %}">Enlace a la cámara {{ camera.id }}</a>
-        <p>Mostrar enlace a página dinámica</p>
+        <a href="{% url 'camera_dyn' camera.id %}">Enlace a la cámara dinámica {{ camera.id }}</a>
         <p>Name: {{ camera.name }}</p>
         <p>número de comentarios: {{ camera.num_comments }}</p>
         <hr>
