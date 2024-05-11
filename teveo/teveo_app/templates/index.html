@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} TeVeO - Página Principal {% endblock %}
+
+{% block content %}
+<h1>Bienvenido a TeVeO</h1>
+
+<h3>Lista de comentarios</h3>
+<hr>
+
+{% for comment in comments %}
+    <b><a href="{% url 'camera_detail' comment.id_camera.id %}">Cámara: {{ comment.id_camera }}</a></b>
+    <p>Fecha del comentario: {{ comment.date }}</p>
+    <p>Texto del comentario: {{ comment.text }}</p>
+    <p>Imagen de la camara en el momento que se puso el mensaje</p>
+    <hr>
+
+{% endfor %}
+{% endblock %}

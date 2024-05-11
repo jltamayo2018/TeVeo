@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TeVeO{% endblock %}</title>
+    </head>
+
+    <body>
+        <header>
+            <a href="{% url 'index' %}">TeVeO</a>
+            <span>{{ user.username|default:"Anónimo" }}</span>
+        </header>
+
+        <nav>
+            <a href="{% url 'index' %}">Principal</a>
+            <a href="{% url 'camaras' %}">Cámaras</a>
+            <a href="{% url 'settings' %}">Configuración</a>
+            <a href="{% url 'help' %}">Ayuda</a>
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer>
+            <p>Cámaras: {{ total_cameras }}. Comentarios: {{ total_comments }}</p>
+        </footer>
+    </body>
+</html>

@@ -24,7 +24,7 @@ def index(request):
         'comments': comments,
     }
 
-    return render(request, "teveo_app/index.html", context)
+    return render(request, "index.html", context)
 
 
 @csrf_exempt
@@ -53,7 +53,7 @@ def comentario(request):
         )
         new_comment.save()
 
-        return redirect("/teveo")
+        return redirect("/")
 
     id_camera = request.GET["id_camera"]
     print(id_camera)
@@ -64,7 +64,7 @@ def comentario(request):
         'camera': camera,
         'current_date': datetime.now(),
     }
-    return render(request, "teveo_app/comentario.html", context)
+    return render(request, "comentario.html", context)
 
 
 @csrf_exempt
@@ -75,7 +75,7 @@ def cameras(request):
         print("ENTRO A POST")
         source = request.POST["source"]
         print(source)
-        source_path = os.path.join(BASE_DIR, "teveo_app/data_sources", source)
+        source_path = os.path.join(BASE_DIR, "teveo_app/static/data_sources", source)
         print(source_path)
         cameras = utils.load_cameras_from_xml(source_path)
         print("CAMARITAS: ", cameras)
@@ -85,7 +85,7 @@ def cameras(request):
         'sources': DB_SOURCES,
         'cameras': camaras,
     }
-    return render(request, "teveo_app/cameras.html", context)
+    return render(request, "cameras.html", context)
 
 
 def camera_detail(request, id_camera):
@@ -102,7 +102,7 @@ def camera_detail(request, id_camera):
     context = {
         'camera': camera,
     }
-    return render(request, "teveo_app/camera_detail.html", context)
+    return render(request, "camera_detail.html", context)
 
 
 def camera_dyn(request, id_camera):
@@ -120,4 +120,12 @@ def camera_dyn(request, id_camera):
         'camera': camera,
     }
 
-    return render(request, "teveo_app/camera_detail_dyn.html", context)
+    return render(request, "camera_detail_dyn.html", context)
+
+
+def help(request):
+    return render(request, "help.html", {})
+
+
+def settings(request):
+    return render(request, "settings.html", {})
