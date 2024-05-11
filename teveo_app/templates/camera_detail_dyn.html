@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Página de una cámara específica dinámica</title>
-        <style>
-            img {
-                width: 50%;
-                height: auto;
-            }
-        </style>
-        <script src="https://unpkg.com/htmx.org@latest"></script>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Detalles dinámicos de la cámara: {{ camera.name }}</h1>
-        <p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
+{% block title %} TeVeO - Página dinámica de cámara específica {% endblock %}
 
-        <a href="{% url 'camera_detail' camera.id %}">Página estática de la cámara {{ camera.id }}</a>
-        <hr>
-        
-        <hr>
-        <a href="{% url 'comentario' %}?id_camera={{ camera.id }}">Escribir un comentario</a>
-        <p>Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
-    </body>
-</html>
+{% block content %}
+
+<script src="https://unpkg.com/htmx.org@latest"></script>
+
+<h1>Detalles dinámicos de la cámara: {{ camera.name }}</h1>
+<p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
+
+<a href="{% url 'camera_detail' camera.id %}">Página estática de la cámara {{ camera.id }}</a>
+<hr>
+
+<hr>
+<a href="{% url 'comentario' %}?id_camera={{ camera.id }}">Escribir un comentario</a>
+<p>Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
+{% endblock %}

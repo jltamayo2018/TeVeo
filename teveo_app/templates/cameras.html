@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Página de cámaras</title>
-</head>
-<body>
-    <h1>Página de cámaras</h1>
+{% extends 'base.html' %}
 
-    <h2>Fuentes de Datos</h2>
-    {% for source in sources %}
-        <form action="" method="POST">
-            <p>Listado: {{ source }}</p>
-            <button type="submit" name="source" value="{{ source }}">Descargar {{ source }}</button>
-        </form>
-        <hr>
-    {% endfor %}
+{% block title %} TeVeO - Página de cámaras {% endblock %}
+
+{% block content %}
+<h1>Página de cámaras</h1>
+
+<h2>Fuentes de Datos</h2>
+{% for source in sources %}
+    <form action="" method="POST">
+        <p>Listado: {{ source }}</p>
+        <button type="submit" name="source" value="{{ source }}">Descargar {{ source }}</button>
+    </form>
+    <hr>
+{% endfor %}
 
 
-    <h2>Listado de cámaras</h2>
-    {% for camera in cameras %}
-        <p>ID: {{ camera.id }} </p>
-        <a href="{% url 'camera_detail' camera.id %}">Enlace a la cámara {{ camera.id }}</a>
-        <a href="{% url 'camera_dyn' camera.id %}">Enlace a la cámara dinámica {{ camera.id }}</a>
-        <p>Name: {{ camera.name }}</p>
-        <p>número de comentarios: {{ camera.num_comments }}</p>
-        <hr>
-    {% endfor %}
-
-</body>
-</html>
+<h2>Listado de cámaras</h2>
+{% for camera in cameras %}
+    <p>ID: {{ camera.id }} </p>
+    <a href="{% url 'camera_detail' camera.id %}">Enlace a la cámara {{ camera.id }}</a>
+    <a href="{% url 'camera_dyn' camera.id %}">Enlace a la cámara dinámica {{ camera.id }}</a>
+    <p>Name: {{ camera.name }}</p>
+    <p>número de comentarios: {{ camera.num_comments }}</p>
+    <hr>
+{% endfor %}
+{% endblock %}
