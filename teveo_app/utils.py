@@ -56,11 +56,9 @@ def extract_from_xml2(root):
 
 
 def extract_from_kml(root, namespace):
-    print("extract_from_kml")
     cameras = []
 
     for placemark in root.findall(".//kml:Placemark", namespace):
-        print("placemark")
         # Obtener la descripción para obtener la URL de la imagen
         description = placemark.find("kml:description", namespace).text
         # Extraer la URL de la imagen usando una expresión regular
@@ -91,22 +89,17 @@ def extract_from_kml(root, namespace):
 
 
 def load_cameras_from_xml(data_source_path):
-    print("VAMOS A EXTRAER")
     tree = ET.parse(data_source_path) # cargamos el archivo XML
     root = tree.getroot() # obtenemos el elemento raíz del árbol xml
 
     root_tag = root.tag.split("}")[-1]
-    print("Root tag:", root_tag)
 
     # lista para almacenar las cámaras extraídas
     cameras = []
     if root_tag == "camaras":  # Formato del primer archivo XML (listado1.xml)
-        print("DE XML 1")
         cameras=extract_from_xml1(root)
     elif root_tag == "list":  # Formato del segundo archivo XML (listado2.xml)
-        print("DE XML 2")
         cameras=extract_from_xml2(root)
     elif root_tag == "kml":
-        print("DE KML")
         cameras=extract_from_kml(root, KML_NAMESPACE)
     return cameras
