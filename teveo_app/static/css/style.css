@@ -1,12 +1,3 @@
-/*.cabecera {
-    background-image: url('../static/images/header.png');
-    background-size: cover; /* Para que la imagen se ajuste al tamaño de la cabecera */
-    /*color: white; /* Para que el texto se vea mejor sobre la imagen */
-/*    padding: 20px; /* Ajusta el espaciado interno según sea necesario */
-/*    width: auto;
-    height: auto;
-}*/
-
 img {
     width: 50%;
     height: auto;
@@ -36,6 +27,8 @@ body {
     padding: 20px; /* Espaciado interno */
     display: flex; /* Mostrar elementos en línea */
     align-items: center; /* Alinear elementos verticalmente */
+    text-align: right;
+
 }
 
 .cabecera img {
@@ -48,6 +41,7 @@ body {
     text-decoration: none; /* Sin subrayado */
     font-weight: bold; /* Texto en negrita */
     font-size: 24px; /* Tamaño del texto */
+    text-align: center;
 }
 
 .cabecera .cabecera-texto a:hover {

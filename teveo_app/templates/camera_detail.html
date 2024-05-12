@@ -16,6 +16,16 @@
     {% endif %}
     <hr>
     <a href="{% url 'comentario' %}?id_camera={{ camera.id }}" class="comentario-link">Escribir un comentario</a>
-    <p class="comentario-list">Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
+    <br>
+    <hr>
+    <p class="comentario-list"><strong>Comentarios de esta cámara:</strong></p><hr>
+    {% for comment in comments_for_this_camera %}
+        <div class="comentario">
+            <p class="comentario-date">Fecha del comentario: {{ comment.date }}</p>
+            <p class="comentario-text">Texto del comentario: {{ comment.text }}</p>
+            <p class="comentario-img">Imagen de la camara en el momento que se puso el mensaje</p>
+            <hr>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}

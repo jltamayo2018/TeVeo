@@ -1,7 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %} TeVeO - Página de ayuda {% endblock %}
+{% block title %} TeVeO - Ayuda {% endblock %}
 
 {% block content %}
-    Esto es una página de ayuda
+<div class="container">
+    <h1>Ayuda - TeVeO</h1>
+
+    <h2>Autoría</h2>
+    <p>Esta aplicación ha sido desarrollada por Jose Luis Tamayo Díez.</p>
+
+    <h2>Funcionamiento</h2>
+    <p>La aplicación TeVeO tiene como objetivo escribir comentarios sobre diversas cámaras, sacadas de distintas fuentes
+        de datos. Cualquier usuario puede ver tanto los comentarios, como las cámaras de las que disponemos, como cada
+        cámara individual, de forma estática o dinámica.</p>
+
+    <h2>Documentación</h2>
+    <p>A continuación se presenta una breve documentación sobre el funcionamiento de la aplicación:</p>
+    <ul>
+        <li><strong>Página Principal:</strong> Esta página muestra un listado de comentarios de distintas cámaras, cada
+            uno de estos comentarios tiene su texto, imagen en el que se puso el comentario, fecha y el nombre de la
+            cámara, que además es un link a la cámara estática.</li>
+        <li><strong>Página de Cámaras:</strong> En esta página puedes observar un listado de fuentes, de las que puedes
+            extraer cámaras pinchando sobre el botón que consideres. Además, un listado de cámaras con su nombre,
+            identificador, enlaces a la cámara dinámica y estática y su número de comentarios.</li>
+        <li><strong>Página de Configuración:</strong> Aquí puedes inciar sesión si quieres contribuir de manera no
+            anónima, además de cambiar la fuente y tamaño de la web a tu gusto personal.</li>
+        <!-- Agrega más elementos según sea necesario -->
+    </ul>
+</div>
 {% endblock %}
