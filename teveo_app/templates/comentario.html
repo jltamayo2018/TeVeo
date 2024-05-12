@@ -3,19 +3,20 @@
 {% block title %} TeVeO - Página de comentario {% endblock %}
 
 {% block content %}
-
-<h1>Escribir un comentario para {{ camera.name }}</h1>
-<p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
-{% if camera.img_camera %}
-        <img src="{{ camera.img_camera }}" alt="Imagen de la cámara">
+<div class="container">
+    <h1 class="page-title">Escribir un comentario para {{ camera.name }}</h1>
+    <p class="camara-ubicacion">Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
+    {% if camera.img_camera %}
+        <img src="{{ camera.img_camera }}" alt="Imagen de la cámara" class="camara-img">
     {% else %}
-        <p>No hay imagen disponible</p>
+        <p class="camara-no-img">No hay imagen disponible</p>
     {% endif %}
-<p>Fecha y hora actuales: {{ current_date }}</p>
-<form action="" method="POST">
-    <label for="comment_text">Comentario:</label>
-    <input type="hidden" name="id_camera" value="{{ camera.id }}">
-    <input type="text" name="comment_text" id="comment_text" maxlength="200" required>
-    <input type="submit" value="Enviar comentario">
-</form>
+    <p class="fecha-actual">Fecha y hora actuales: {{ current_date }}</p>
+    <form action="" method="POST" class="comentario-form">
+        <label for="comment_text" class="comentario-label">Comentario:</label>
+        <input type="hidden" name="id_camera" value="{{ camera.id }}">
+        <input type="text" name="comment_text" id="comment_text" maxlength="200" required class="comentario-input">
+        <input type="submit" value="Enviar comentario" class="comentario-btn">
+    </form>
+</div>
 {% endblock %}

@@ -1,11 +1,148 @@
-.cabecera {
-    /*background-image: url('images/header.png');*/
+/*.cabecera {
+    background-image: url('../static/images/header.png');
     background-size: cover; /* Para que la imagen se ajuste al tamaño de la cabecera */
     /*color: white; /* Para que el texto se vea mejor sobre la imagen */
-    padding: 20px; /* Ajusta el espaciado interno según sea necesario */
-}
+/*    padding: 20px; /* Ajusta el espaciado interno según sea necesario */
+/*    width: auto;
+    height: auto;
+}*/
 
 img {
     width: 50%;
     height: auto;
+}
+
+/* styles.css */
+
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif; /* Tipo de fuente predeterminado */
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 0; /* Eliminar relleno predeterminado */
+    box-sizing: border-box; /* Incluir bordes y relleno en el tamaño total */
+}
+
+.container {
+    width: 80%; /* Ancho del contenedor principal */
+    margin: auto; /* Centrar el contenedor en la página */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el encabezado */
+.cabecera {
+    background-color: #333; /* Color de fondo oscuro */
+    color: white; /* Texto en color blanco */
+    padding: 20px; /* Espaciado interno */
+    display: flex; /* Mostrar elementos en línea */
+    align-items: center; /* Alinear elementos verticalmente */
+}
+
+.cabecera img {
+    width: 150px; /* Tamaño de la imagen del logo */
+    margin-right: 10px; /* Margen derecho para separar el texto del logo */
+}
+
+.cabecera .cabecera-texto a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 24px; /* Tamaño del texto */
+}
+
+.cabecera .cabecera-texto a:hover {
+    color: #ccc; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilos para el menú de navegación */
+nav {
+    background-color: #333; /* Color de fondo oscuro */
+    padding: 10px 0; /* Espaciado interno arriba y abajo */
+}
+
+nav a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    margin: 0 10px; /* Margen entre enlaces */
+    font-size: 18px; /* Tamaño del texto */
+}
+
+nav a:hover {
+    color: #ccc; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #333; /* Color de fondo oscuro */
+    color: white; /* Texto en color blanco */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alinear texto al centro */
+}
+
+/* Estilos específicos para elementos de contenido */
+.container h1,
+.container h2,
+.container h3,
+.container h4 {
+    color: #333; /* Color del texto del encabezado */
+}
+
+.container .page-title {
+    font-size: 24px; /* Tamaño del título de la página */
+    margin-bottom: 20px; /* Margen inferior del título */
+}
+
+.container .section-title {
+    font-size: 20px; /* Tamaño del título de sección */
+    margin-bottom: 10px; /* Margen inferior del título */
+}
+
+.container .comentario {
+    margin-bottom: 20px; /* Margen inferior entre comentarios */
+}
+
+.container .comentario-date {
+    font-style: italic; /* Estilo de texto en cursiva */
+    color: #888; /* Color de texto gris para la fecha */
+}
+
+.container .comentario-img {
+    font-style: italic; /* Estilo de texto en cursiva */
+    color: #888; /* Color de texto gris para la información de imagen */
+}
+
+.container .camara-no-img {
+    color: #888; /* Color de texto gris para cuando no hay imagen */
+}
+
+.container .camara-ubicacion {
+    font-style: italic; /* Estilo de texto en cursiva */
+    color: #888; /* Color de texto gris para la información de ubicación */
+}
+
+.container .fecha-actual {
+    font-style: italic; /* Estilo de texto en cursiva */
+    color: #888; /* Color de texto gris para la fecha actual */
+}
+
+.container .comentario-label {
+    font-weight: bold; /* Texto en negrita para etiqueta del comentario */
+}
+
+.container .comentario-input {
+    width: 100%; /* Ancho completo para el campo de entrada */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+.container .comentario-btn {
+    background-color: #333; /* Color de fondo oscuro para el botón */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de ratón tipo puntero */
+}
+
+.container .comentario-btn:hover {
+    background-color: #444; /* Cambio de color al pasar el ratón */
 }

@@ -12,24 +12,26 @@
 
     <body>
         <header class="cabecera">
-            <img src="{% static 'images/header.png' %}" alt="logo">
-            <a href="{% url 'index' %}">TeVeO</a>
-            <span>{{ user.username|default:"Anónimo" }}</span>
+            <img src="{% static 'images/header.png' %}" alt="logo" class="logo">
+            <div class="cabecera-texto">
+                <a href="{% url 'index' %}" class="cabecera-link">TeVeO</a>
+                <span  class="username">{{ user.username|default:"Anónimo" }}</span>
+            </div>
         </header>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <a href="{% url 'index' %}">Principal</a>
-            <a href="{% url 'camaras' %}">Cámaras</a>
-            <a href="{% url 'settings' %}">Configuración</a>
-            <a href="{% url 'help' %}">Ayuda</a>
-            <a href="{% url 'admin:index' %}">Admin</a>
+            <a href="{% url 'index' %}" class="nav-link">Principal</a>
+            <a href="{% url 'camaras' %}" class="nav-link">Cámaras</a>
+            <a href="{% url 'settings' %}" class="nav-link">Configuración</a>
+            <a href="{% url 'help' %}" class="nav-link">Ayuda</a>
+            <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
         </nav>
 
         {% block content %}
         {% endblock %}
 
         <footer>
-            <p>Cámaras: {{ total_cameras }}. Comentarios: {{ total_comments }}</p>
+            <p class="footer-info">Cámaras: {{ total_cameras }}. Comentarios: {{ total_comments }}</p>
         </footer>
     </body>
 </html>

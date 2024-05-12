@@ -3,25 +3,32 @@
 {% block title %} TeVeO - Página de cámaras {% endblock %}
 
 {% block content %}
-<h1>Página de cámaras</h1>
+<div class="container">
+    <h1 class="page-title">Página de cámaras</h1>
 
-<h2>Fuentes de Datos</h2>
-{% for source in sources %}
-    <form action="" method="POST">
-        <p>Listado: {{ source }}</p>
-        <button type="submit" name="source" value="{{ source }}">Descargar {{ source }}</button>
-    </form>
-    <hr>
-{% endfor %}
+    <div class="fuentes-datos">
+        <h2 class="section-title">Fuentes de Datos</h2>
+        {% for source in sources %}
+            <form action="" method="POST" class="fuente-form">
+                <p class="fuente-info">Listado: {{ source }}</p>
+                <button type="submit" name="source" value="{{ source }}" class="fuente-btn">Descargar {{ source }}</button>
+            </form>
+            <hr>
+        {% endfor %}
+    </div>
 
-
-<h2>Listado de cámaras</h2>
-{% for camera in cameras %}
-    <p>ID: {{ camera.id }} </p>
-    <a href="{% url 'camera_detail' camera.id %}">Enlace a la cámara {{ camera.id }}</a>
-    <a href="{% url 'camera_dyn' camera.id %}">Enlace a la cámara dinámica {{ camera.id }}</a>
-    <p>Name: {{ camera.name }}</p>
-    <p>número de comentarios: {{ camera.num_comments }}</p>
-    <hr>
-{% endfor %}
+    <div class="listado-camaras">
+        <h2 class="section-title">Listado de cámaras</h2>
+        {% for camera in cameras %}
+            <div class="camara-info">
+                <p class="camara-id">ID: {{ camera.id }}</p>
+                <a href="{% url 'camera_detail' camera.id %}" class="camara-link">Enlace a la cámara {{ camera.id }}</a>
+                <a href="{% url 'camera_dyn' camera.id %}" class="camara-dyn-link">Enlace a la cámara dinámica {{ camera.id }}</a>
+                <p class="camara-name">Nombre: {{ camera.name }}</p>
+                <p class="camara-comments">Número de comentarios: {{ camera.num_comments }}</p>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

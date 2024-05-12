@@ -3,16 +3,17 @@
 {% block title %} TeVeO - Página dinámica de cámara específica {% endblock %}
 
 {% block content %}
-
 <script src="https://unpkg.com/htmx.org@latest"></script>
 
-<h1>Detalles dinámicos de la cámara: {{ camera.name }}</h1>
-<p>Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
+<div class="container">
+    <h1 class="page-title">Detalles dinámicos de la cámara: {{ camera.name }}</h1>
+    <p class="camara-ubicacion">Ubicación: {{ camera.latitude }}, {{ camera.longitude }}</p>
 
-<a href="{% url 'camera_detail' camera.id %}">Página estática de la cámara {{ camera.id }}</a>
-<hr>
+    <a href="{% url 'camera_detail' camera.id %}" class="camara-link">Página estática de la cámara {{ camera.id }}</a>
+    <hr>
 
-<hr>
-<a href="{% url 'comentario' %}?id_camera={{ camera.id }}">Escribir un comentario</a>
-<p>Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
+    <hr>
+    <a href="{% url 'comentario' %}?id_camera={{ camera.id }}" class="comentario-link">Escribir un comentario</a>
+    <p class="comentario-list">Listado de todos los comentarios para esa cámara desde cualquier navegador (primero los más recientes)</p>
+</div>
 {% endblock %}
