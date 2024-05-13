@@ -28,7 +28,7 @@ class Comment(models.Model):
     id_camera = models.ForeignKey(Camera, on_delete=models.CASCADE)
     date = models.DateTimeField() #(auto_now_add=True)
     text = models.CharField(max_length=200, default="")
-    #img_camera = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.text

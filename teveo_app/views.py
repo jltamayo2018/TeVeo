@@ -6,6 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 import os
 from django.conf import settings
 from datetime import datetime
+import urllib.request
+import requests
+import base64
 
 BASE_DIR = settings.BASE_DIR
 
@@ -27,6 +30,17 @@ def index(request):
     return render(request, "index.html", context)
 
 
+def download_image(url_imagen):
+    """Download image and return it as bytes"""
+    request = urllib.request.Request(url=url_imagen)
+    try:
+        with urllib.request.urlopen(request) as response:
+            image = response.read()
+    except urllib.error.URLError as e:
+        return None
+    return image
+
+
 @csrf_exempt
 def comentario(request):
     # en el caso de que se rellene el formulario de comentario
@@ -40,11 +54,19 @@ def comentario(request):
         # obtenemos la cámara correspondiente
         camera = Camera.objects.get(id=id_camera)
 
+        image_url = camera.img_camera
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            image_bytes = download_image(image_url)
+            if image_bytes:
+                image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+
         # creamos y guardamos el comentario
         new_comment = Comment(
             id_camera=camera,
             date=datetime.now(),
             text=comment_text,
+            image=image_base64,
         )
         new_comment.save()
 
