@@ -8,11 +8,12 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+        <link rel="icon" href="{% static 'images/favicon-2.png' %}" type="image/x-icon">
     </head>
 
     <body>
-        <header class="cabecera">
-            <img src="{% static 'images/header.png' %}" alt="logo" class="logo">
+        <header class="cabecera" id="header">
+            <img src="{% static 'images/favicon-2.png' %}" alt="Favicon" class="favicon">
             <div class="cabecera-texto">
                 <a href="{% url 'index' %}" class="cabecera-link">TeVeO</a>
                 <span  class="username">{{ user.username|default:"Anónimo" }}</span>

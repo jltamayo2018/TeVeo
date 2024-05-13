@@ -4,19 +4,16 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="page-title">Bienvenido a TeVeO</h1>
-
-    <h3 class="section-title">Lista de comentarios</h3>
+    <h3 class="page-title">Lista de comentarios</h3>
     <hr>
 
     <div class="comentarios">
     {% for comment in comments %}
-        <div class="comentario">
+        <div class="comentario-container">
             <b><a href="{% url 'camera_detail' comment.id_camera.id %}" class="comentario-link">Cámara: {{ comment.id_camera }}</a></b>
             <p class="comentario-date">Fecha del comentario: {{ comment.date }}</p>
             <p class="comentario-text">Texto del comentario: {{ comment.text }}</p>
             <p class="comentario-img">Imagen de la camara en el momento que se puso el mensaje</p>
-            <hr>
         </div>
     {% endfor %}
     </div>

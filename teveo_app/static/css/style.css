@@ -12,6 +12,7 @@ body {
     margin: 0; /* Eliminar márgenes predeterminados */
     padding: 0; /* Eliminar relleno predeterminado */
     box-sizing: border-box; /* Incluir bordes y relleno en el tamaño total */
+    text-align: center !important;
 }
 
 .container {
@@ -27,8 +28,18 @@ body {
     padding: 20px; /* Espaciado interno */
     display: flex; /* Mostrar elementos en línea */
     align-items: center; /* Alinear elementos verticalmente */
-    text-align: right;
+    justify-content: center; /* Alinear elementos horizontalmente */
+    background-size: cover; /* Ajustar la imagen de fondo al tamaño de la cabecera */
+    background-position: center; /* Centrar la imagen de fondo */
+    background-repeat: no-repeat; /* No repetir la imagen de fondo */
+}
 
+.cabecera-texto {
+    text-align: center;
+}
+
+.cabecera-link {
+    font-size: 36px !important; /* Tamaño de fuente más grande */
 }
 
 .cabecera img {
@@ -36,12 +47,18 @@ body {
     margin-right: 10px; /* Margen derecho para separar el texto del logo */
 }
 
+.favicon {
+    width: 36px !important; /* Ajusta el tamaño según sea necesario */
+    height: 36px !important;
+    margin-right: 10px !important; /* Espacio entre la imagen y el texto */
+}
+
 .cabecera .cabecera-texto a {
     color: white; /* Color del texto */
     text-decoration: none; /* Sin subrayado */
     font-weight: bold; /* Texto en negrita */
     font-size: 24px; /* Tamaño del texto */
-    text-align: center;
+    text-align: center !important;
 }
 
 .cabecera .cabecera-texto a:hover {
@@ -139,4 +156,46 @@ footer {
 
 .container .comentario-btn:hover {
     background-color: #444; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilos para el contenedor de comentarios */
+.comentario-container {
+    background-color: #f9f9f9; /* Color de fondo de la caja */
+    border: 1px solid #ddd; /* Borde alrededor de la caja */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior entre cada caja de comentario */
+}
+
+/* Estilos para el texto del comentario */
+.comentario-container p {
+    margin: 0; /* Eliminar el margen interior de los párrafos dentro de la caja */
+}
+
+/* Estilos para el enlace del comentario */
+.comentario-container a {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+}
+
+.comentario-container a:hover {
+    text-decoration: underline; /* Subrayar el enlace al pasar el ratón */
+}
+
+/* Estilos para los contenedores de fuentes de datos */
+.fuente-container {
+    background-color: #f9f9f9; /* Color de fondo de la caja */
+    border: 1px solid #ccc; /* Borde de 1px sólido */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+/* Estilos para los contenedores de cámaras */
+.camara-container {
+    background-color: #f9f9f9; /* Color de fondo de la caja */
+    border: 1px solid #ccc; /* Borde de 1px sólido */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
+    border-radius: 5px; /* Borde redondeado */
 }
