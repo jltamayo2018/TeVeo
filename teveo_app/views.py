@@ -91,7 +91,7 @@ def camera_detail(request, id_camera):
         'camera': camera,
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
-        'comments_for_this_camera': Comment.objects.filter(id_camera=camera),
+        'comments_for_this_camera': Comment.objects.filter(id_camera=camera).order_by('-date'),
     }
     return render(request, "camera_detail.html", context)
 
@@ -107,7 +107,7 @@ def camera_dyn(request, id_camera):
         'camera': camera,
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
-        'comments_for_this_camera': Comment.objects.filter(id_camera=camera),
+        'comments_for_this_camera': Comment.objects.filter(id_camera=camera).order_by('-date'),
     }
 
     return render(request, "camera_detail_dyn.html", context)

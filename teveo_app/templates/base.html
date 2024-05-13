@@ -31,8 +31,17 @@
         {% block content %}
         {% endblock %}
 
-        <footer>
-            <p class="footer-info">Cámaras: {{ total_cameras }}. Comentarios: {{ total_comments }}</p>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-camaras">
+                    <p>Cámaras: {{ total_cameras }}</p>
+                </div>
+                <div class="footer-comentarios">
+                    <p>Comentarios: {{ total_comments }}</p>
+                </div>
+            </div>
         </footer>
+
     </body>
 </html>
+

@@ -53,6 +53,12 @@ body {
     margin-right: 10px !important; /* Espacio entre la imagen y el texto */
 }
 
+.comments {
+    width: 36px !important; /* Ajusta el tamaño según sea necesario */
+    height: 36px !important;
+    margin-right: 10px !important; /* Espacio entre la imagen y el texto */
+}
+
 .cabecera .cabecera-texto a {
     color: white; /* Color del texto */
     text-decoration: none; /* Sin subrayado */
@@ -84,10 +90,32 @@ nav a:hover {
 
 /* Estilos para el pie de página */
 footer {
-    background-color: #333; /* Color de fondo oscuro */
-    color: white; /* Texto en color blanco */
+    position: fixed; /* Posicionamiento fijo */
+    bottom: 0; /* Pegado al borde inferior */
+    left: 0; /* Alineado a la izquierda */
+    width: 100%; /* Ancho completo */
+    background-color: #333; /* Color de fondo */
+    color: white; /* Color del texto */
     padding: 10px; /* Espaciado interno */
-    text-align: center; /* Alinear texto al centro */
+    text-align: center; /* Alineación del texto */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-camaras, .footer-comentarios {
+    flex: 1; /* Ajustar el tamaño de los elementos de forma equitativa */
+    text-align: center; /* Centrar el texto */
+    padding: 0 10px; /* Añadir un pequeño espacio entre los elementos */
+}
+
+.footer-icon {
+    width: 36px !important; /* Ajusta el tamaño según sea necesario */
+    height: 36px !important;
+    margin-right: 10px; /* Espacio a la derecha de la imagen para separarla del texto */
 }
 
 /* Estilos específicos para elementos de contenido */
