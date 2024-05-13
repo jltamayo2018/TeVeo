@@ -22,7 +22,7 @@
             <img src="{% static 'images/favicon-2.png' %}" alt="Favicon" class="favicon">
             <div class="cabecera-texto">
                 <a href="{% url 'index' %}" class="cabecera-link">TeVeO</a>
-                <span  class="username">{{ user.username|default:"Anónimo" }}</span>
+                <span  class="username">{{ request.session.username|default:"Anónimo" }}</span>
             </div>
         </header>
 

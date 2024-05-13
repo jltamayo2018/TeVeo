@@ -11,6 +11,7 @@ import requests
 import base64
 import random
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 BASE_DIR = settings.BASE_DIR
 
@@ -159,6 +160,9 @@ def settings(request):
         print("ENTRO A POST")
         if "save_username" in request.POST:
             print("ENTRO A username")
+            new_username = request.POST.get("username")
+            # Almacena el nombre del comentador en la sesión del usuario
+            request.session['username'] = new_username
 
         if "save_appearance" in request.POST:
             print("ENTRO A appearance")
