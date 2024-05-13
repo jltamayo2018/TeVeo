@@ -159,9 +159,14 @@ def settings(request):
         print("ENTRO A POST")
         if "save_username" in request.POST:
             print("ENTRO A username")
-            
+
         if "save_appearance" in request.POST:
             print("ENTRO A appearance")
+            font_size = request.POST.get("font_size")
+            font_type = request.POST.get("font_type")
+            # Guarda el tamaño y tipo de fuente en la sesión del usuario
+            request.session['font_size'] = font_size
+            request.session['font_type'] = font_type
 
     context = {
         'total_cameras': Camera.objects.count(),

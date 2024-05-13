@@ -9,6 +9,12 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
         <link rel="icon" href="{% static 'images/favicon-2.png' %}" type="image/x-icon">
+        <style>
+            body {
+                font-size: {% if request.session.font_size %}{{ request.session.font_size }}{% else %}16px{% endif %};
+                font-family: {% if request.session.font_type %}{{ request.session.font_type }}{% else %}'Arial', sans-serif{% endif %};
+            }
+        </style>
     </head>
 
     <body>
