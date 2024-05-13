@@ -9,6 +9,8 @@ from datetime import datetime
 import urllib.request
 import requests
 import base64
+import random
+from django.contrib.auth.decorators import login_required
 
 BASE_DIR = settings.BASE_DIR
 
@@ -70,6 +72,9 @@ def comentario(request):
         )
         new_comment.save()
 
+        camera.num_comments += 1
+        camera.save()
+
         return redirect("/")
 
     id_camera = request.GET["id_camera"]
@@ -93,12 +98,16 @@ def cameras(request):
         source_path = os.path.join(BASE_DIR, "teveo_app/static/data_sources", source)
         cameras = utils.load_cameras_from_xml(source_path)
 
+    # obtengo cámara aleatoria
+    random_camera = random.choice(Camera.objects.all())
+
     camaras = Camera.objects.all().order_by('-num_comments')
     context = {
         'sources': DB_SOURCES,
         'cameras': camaras,
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
+        'random_camera': random_camera,
     }
     return render(request, "cameras.html", context)
 
@@ -150,6 +159,7 @@ def settings(request):
         print("ENTRO A POST")
         if "save_username" in request.POST:
             print("ENTRO A username")
+            
         if "save_appearance" in request.POST:
             print("ENTRO A appearance")
 

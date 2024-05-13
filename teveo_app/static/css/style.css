@@ -227,3 +227,18 @@ footer {
     margin-bottom: 20px; /* Margen inferior */
     border-radius: 5px; /* Borde redondeado */
 }
+
+.comentario-container {
+    display: flex; /* Cambiar al diseño de caja flexible */
+    align-items: center; /* Alinear verticalmente los elementos */
+}
+
+.comentario-container .comentario-texto {
+    flex-grow: 1; /* Permite que este elemento ocupe todo el espacio restante */
+}
+
+.comentario-container img {
+    max-width: 200px; /* Establece un ancho máximo para la imagen */
+    height: auto; /* Mantener la proporción de aspecto */
+    margin-left: 20px; /* Espacio a la izquierda de la imagen */
+}

@@ -29,7 +29,11 @@
             <div class="comentario">
                 <p class="comentario-date">Fecha del comentario: {{ comment.date }}</p>
                 <p class="comentario-text">Texto del comentario: {{ comment.text }}</p>
-                <p class="comentario-img">Imagen de la camara en el momento que se puso el mensaje</p>
+                {% if comment.image %}
+                    <img src="data:image/jpeg;base64,{{ comment.image }}" alt="Imagen no disponible">
+                {% else %}
+                    <p>Imagen no disponible</p>
+                {% endif %}
                 <hr>
             </div>
         {% endfor %}
