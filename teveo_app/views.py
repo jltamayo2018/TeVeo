@@ -10,8 +10,6 @@ import urllib.request
 import requests
 import base64
 import random
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.http import JsonResponse
 
@@ -121,7 +119,20 @@ def cameras(request):
     return render(request, "cameras.html", context)
 
 
+def like_camera(id_camera):
+    """Incrementa en uno el número de likes de la cámara"""
+    camera = Camera.objects.get(id=id_camera)
+    camera.num_likes += 1
+    camera.save()
+
+
+@csrf_exempt
 def camera_detail(request, id_camera):
+    if request.method == "POST":
+        like_camera(id_camera)
+
+        return redirect("/camaras")
+
     try:
         camera = Camera.objects.get(id=id_camera)
     except Camera.DoesNotExist:

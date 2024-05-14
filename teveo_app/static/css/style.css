@@ -247,3 +247,22 @@ footer {
     height: auto; /* Mantener la proporción de aspecto */
     margin-left: 20px; /* Espacio a la izquierda de la imagen */
 }
+
+.camara-container-detail {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.camara-img-container {
+    flex: 1;
+    margin-right: 20px; /* Espacio entre la imagen y los botones */
+}
+
+.likes-container {
+    display: flex;
+    flex-direction: column; /* Apila los botones verticalmente */
+}
+
+.like-button {
+    margin-bottom: 10px; /* Espacio entre el botón y el contador de likes */
+}
