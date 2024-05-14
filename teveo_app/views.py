@@ -13,6 +13,7 @@ import random
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from django.http import JsonResponse
 
 BASE_DIR = settings.BASE_DIR
 
@@ -51,7 +52,10 @@ def comentario(request):
     if request.method == "POST":
         id_camera = request.POST["id_camera"]
         comment_text = request.POST["comment_text"]
-        username = request.session['username']
+        if 'username' in request.session:
+            username = request.session['username']
+        else:
+            username = "Anónimo"
         print("USERNAME: ", username)
 
         if not id_camera:
@@ -147,6 +151,23 @@ def camera_dyn(request, id_camera):
     }
 
     return render(request, "camera_detail_dyn.html", context)
+
+
+def camera_json(request, id_camera):
+    try:
+        camera = Camera.objects.get(id=id_camera)
+        camera_data = {
+            'id': camera.id,
+            'name': camera.name,
+            'latitude': camera.latitude,
+            'longitude': camera.longitude,
+            'num_comments': camera.num_comments,
+            # Agrega más campos según sea necesario
+        }
+        return JsonResponse(camera_data)
+    except Camera.DoesNotExist:
+        return JsonResponse({'error': 'Cámara no encontrada'}, status=404)
+
 
 
 def help(request):
