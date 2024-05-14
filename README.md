@@ -19,45 +19,45 @@
 ### Página de cada recurso
 
 - En la **página principal** se muestra un listado de comentarios, donde se indica:
-* el nombre de la cámara (enlace a dicha cámara)
-* fecha del comentario
-* autor
-* el comentario
-* imagen de la cámara en el momento en que se puso el comentario
+	- el nombre de la cámara (enlace a dicha cámara)
+	- fecha del comentario
+	- autor
+	- el comentario
+	- imagen de la cámara en el momento en que se puso el comentario
 
 - En la **página de cámaras** se muestra:
-1. listado de fuentes de datos, de donde se obtienen las cámaras
-2. listado de cámaras (con una imagen aleatoria de una de ellas al principio), se muestra su:
-* id
-* enlace a la cámara estática
-* enlace a la cámara dinámica
-* nombre
-* número de comentarios
+	- listado de fuentes de datos, de donde se obtienen las cámaras
+	- listado de cámaras (con una imagen aleatoria de una de ellas al principio), se muestra su:
+		- id
+		- enlace a la cámara estática
+		- enlace a la cámara dinámica
+		- nombre
+		- número de comentarios
 
 - En la **página estática de cada cámara** se muestra:
-* detalles de la cámara
-* enlace a la cámara dinámica
-* enlace a la cámara JSON
-* imagen actual de la cámara
-* enlace para dejar comentario
-* comentarios que hay para dicha cámara
+	- detalles de la cámara
+	- enlace a la cámara dinámica
+	- enlace a la cámara JSON
+	- imagen actual de la cámara
+	- enlace para dejar comentario
+	- comentarios que hay para dicha cámara
 
 - En la **página dinámica** se muestra:
-* lo mismo que en la página estática...
-* con la diferencia de que la imagen se actualiza cada 30 segundos
+	- lo mismo que en la página estática...
+	- con la diferencia de que la imagen se actualiza cada 30 segundos
 
 - En la página **JSON de cada cámara** se muestra:
-* los detalles de cada cámara en formato *JSON*
+	- los detalles de cada cámara en formato *JSON*
 
 - En la **página de comentario**(que solicita query string) se muestra:
-* Detalles de la cámara sobre la que se hace el comentario
-* imagen de la cámara
-* fecha y hora actual
-* formulario para añadir el comentario
+	- Detalles de la cámara sobre la que se hace el comentario
+	- imagen de la cámara
+	- fecha y hora actual
+	- formulario para añadir el comentario
 
 - En la **página de configuración** se muestra:
-* formulario para cambiar el nombre del comentador
-* formulario para cambiar el tamaño y título de la fuente
+	- formulario para cambiar el nombre del comentador
+	- formulario para cambiar el tamaño y título de la fuente
 
 - En la **página de ayuda** se muestra información sobre el funcionamiento de la aplicación web.
 
