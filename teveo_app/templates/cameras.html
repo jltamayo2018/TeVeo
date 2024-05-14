@@ -30,9 +30,9 @@
         {% for camera in cameras %}
             <div class="camara-container">
                 <p class="camara-id">ID: {{ camera.id }}</p>
+                <p class="camara-name">Nombre: {{ camera.name }}</p>
                 <a href="{% url 'camera_detail' camera.id %}" class="camara-link">Enlace a la cámara estática {{ camera.id }}</a>
                 <a href="{% url 'camera_dyn' camera.id %}" class="camara-dyn-link">Enlace a la cámara dinámica {{ camera.id }}</a>
-                <p class="camara-name">Nombre: {{ camera.name }}</p>
                 <p class="camara-comments">Nº de comentarios: {{ camera.num_comments }}</p>
                 <p class="camara-likes">Likes: {{camera.num_likes }}</p>
             </div>

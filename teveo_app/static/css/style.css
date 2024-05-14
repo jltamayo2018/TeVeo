@@ -23,7 +23,8 @@ body {
 
 /* Estilos para el encabezado */
 .cabecera {
-    background-color: #333; /* Color de fondo oscuro */
+    background-image: url('../images/my_header.png'); /* Agregar una imagen de fondo */
+    /*background-color: #333; /* Color de fondo oscuro */
     color: white; /* Texto en color blanco */
     padding: 20px; /* Espaciado interno */
     display: flex; /* Mostrar elementos en línea */

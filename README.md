@@ -16,6 +16,8 @@
 
 ## Resumen parte obligatoria
 
+### Página de cada recurso
+
 - En la **página principal** se muestra un listado de comentarios, donde se indica:
 * el nombre de la cámara (enlace a dicha cámara)
 * fecha del comentario
@@ -44,6 +46,9 @@
 * lo mismo que en la página estática...
 * con la diferencia de que la imagen se actualiza cada 30 segundos
 
+- En la página **JSON de cada cámara** se muestra:
+* los detalles de cada cámara en formato *JSON*
+
 - En la **página de comentario**(que solicita query string) se muestra:
 * Detalles de la cámara sobre la que se hace el comentario
 * imagen de la cámara
@@ -56,10 +61,32 @@
 
 - En la **página de ayuda** se muestra información sobre el funcionamiento de la aplicación web.
 
-Todas las páginas tienen
+### Elementos generales de todas las páginas HTML
+
+Todas las páginas tienen:
+
+- Una **cabecera** con el título *TeVeO* y el nombre del comentador
+
+- Un **menú** desde el que puedes acceder a las distintas páginas
+
+- Un **pie** que muestra el número de cámaras y comentarios que hay
+
+### Aspecto visual de las páginas
+
+- Se emplea *marcado HTML*
+
+- Se utiliza una hoja de estilo *CSS* para la apariencia del sitio
+
+- Se usa *Bootstrap* para la maquetación de las páginas
+
+### Tests
+
+- **De extremo a extremo** para cada recurso de la práctica
 
 ## Lista partes opcionales
 
-* Nombre parte:
-* Nombre parte:
-* ...
+- Inclusión de *favicon*
+- Inclusión de la imagen del Sitio a la Cabecera
+- Permitir "terminar la sesión"
+- "Terminar la sesión" pide confirmación adicional
+- Permitir votar las cámaras. Mediante *likes*
