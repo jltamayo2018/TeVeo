@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} TeVeO - Configuración {% endblock %}
 
 {% block content %}
@@ -11,7 +13,9 @@
         <input type="text" id="id_username" name="username" value="{{ user.username }}">
         <button type="submit" name="save_username" class="btn btn-primary">Guardar</button>
     </form>
+
     <hr>
+
     <h2>Apariencia Personalizable</h2>
     <form action="" method="POST">
         <label for="id_font_size">Tamaño de la Fuente:</label>
@@ -28,5 +32,16 @@
         </select><br>
         <button type="submit" name="save_appearance" class="btn btn-primary">Guardar</button>
     </form>
+
+    <hr>
+
+    <form action="" method="POST">
+        <p>¿Cerrar sesión?</p>
+        <button type="submit" name="delete_account" id="delete-account-btn" class="btn btn-danger">Eliminar Cuenta</button>
+        <script src="{% static 'js/confirm_logout.js' %}"></script>
+    </form>
 </div>
+
+
+
 {% endblock %}

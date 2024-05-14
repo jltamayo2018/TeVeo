@@ -12,6 +12,7 @@ import base64
 import random
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 
 BASE_DIR = settings.BASE_DIR
 
@@ -167,13 +168,18 @@ def settings(request):
             # Almacena el nombre del comentador en la sesión del usuario
             request.session['username'] = new_username
 
-        if "save_appearance" in request.POST:
+        elif "save_appearance" in request.POST:
             print("ENTRO A appearance")
             font_size = request.POST.get("font_size")
             font_type = request.POST.get("font_type")
             # Guarda el tamaño y tipo de fuente en la sesión del usuario
             request.session['font_size'] = font_size
             request.session['font_type'] = font_type
+
+        else:
+            logout(request)
+            # Almacena el nombre del comentador en la sesión del usuario
+
 
     context = {
         'total_cameras': Camera.objects.count(),
