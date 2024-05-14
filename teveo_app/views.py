@@ -50,6 +50,8 @@ def comentario(request):
     if request.method == "POST":
         id_camera = request.POST["id_camera"]
         comment_text = request.POST["comment_text"]
+        username = request.session['username']
+        print("USERNAME: ", username)
 
         if not id_camera:
             return HttpResponse("ID de la cámara no específicado")
@@ -70,6 +72,7 @@ def comentario(request):
             date=datetime.now(),
             text=comment_text,
             image=image_base64,
+            author=username,
         )
         new_comment.save()
 

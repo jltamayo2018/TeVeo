@@ -29,6 +29,7 @@ class Comment(models.Model):
     date = models.DateTimeField() #(auto_now_add=True)
     text = models.CharField(max_length=200, default="")
     image = models.TextField(null=True, blank=True)
+    author = models.CharField(max_length=200, default="Anónimo")
 
     def __str__(self):
         return self.text

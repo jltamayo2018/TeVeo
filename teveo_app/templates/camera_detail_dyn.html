@@ -27,8 +27,9 @@
         <p class="comentario-list"><strong>Comentarios de esta cámara:</strong></p><hr>
         {% for comment in comments_for_this_camera %}
             <div class="comentario">
+                <p class="comentario-text">Comentario: {{ comment.text }}</p>
                 <p class="comentario-date">Fecha del comentario: {{ comment.date }}</p>
-                <p class="comentario-text">Texto del comentario: {{ comment.text }}</p>
+                <p class="comentario-user">Autor: {{ comment.author }}</p>
                 {% if comment.image %}
                     <img src="data:image/jpeg;base64,{{ comment.image }}" alt="Imagen no disponible">
                 {% else %}

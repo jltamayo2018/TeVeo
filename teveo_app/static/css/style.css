@@ -145,6 +145,11 @@ footer {
     color: #888; /* Color de texto gris para la fecha */
 }
 
+.container .comentario-user {
+    font-style: italic; /* Estilo de texto en cursiva */
+    color: #888; /* Color de texto gris para la fecha */
+}
+
 .container .comentario-img {
     font-style: italic; /* Estilo de texto en cursiva */
     color: #888; /* Color de texto gris para la información de imagen */
