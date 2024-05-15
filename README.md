@@ -8,11 +8,11 @@
 * Titulación: Ingeniería Telemática
 * Cuenta en laboratorios: jltamayo
 * Cuenta URJC: jl.tamayo.2018
-* Video básico (url):
-* Video parte opcional (url):
+* Video básico (url): https://youtu.be/B5K6URiHbZ8
+* Video parte opcional (url): https://youtu.be/L3Lg55wVsQg
 * Despliegue (url):
 * Contraseñas: Como e indica en la práctica, NO hay autenticación de usuarios, por lo que NO hay contraseñas
-* Cuenta Admin Site: usuario/contraseña
+* Cuenta Admin Site: admin/admin
 
 ## Resumen parte obligatoria
 
