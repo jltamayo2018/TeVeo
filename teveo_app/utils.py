@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET # para procesar archivos XML
-from .models import Camera, DataSource
+from .models import Camera
 import re
 
 KML_NAMESPACE = {"kml": "http://earth.google.com/kml/2.2"}

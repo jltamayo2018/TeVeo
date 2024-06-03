@@ -103,7 +103,7 @@ def cameras(request):
     if request.method == "POST":
         source = request.POST["source"]
         source_path = os.path.join(BASE_DIR, "teveo_app/static/data_sources", source)
-        cameras = utils.load_cameras_from_xml(source_path)
+        camaras = utils.load_cameras_from_xml(source_path)
 
     # obtengo cámara aleatoria
     random_camera = random.choice(Camera.objects.all())
