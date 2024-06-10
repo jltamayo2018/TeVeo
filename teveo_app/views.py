@@ -7,7 +7,6 @@ import os
 from django.conf import settings
 from datetime import datetime
 import urllib.request
-import requests
 import base64
 import random
 from django.contrib.auth import logout
@@ -63,11 +62,11 @@ def comentario(request):
         camera = Camera.objects.get(id=id_camera)
 
         image_url = camera.img_camera
-        response = requests.get(image_url)
-        if response.status_code == 200:
-            image_bytes = download_image(image_url)
-            if image_bytes:
-                image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        image_bytes = download_image(image_url)
+        if image_bytes:
+            image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        if image_bytes == None:
+            print("NO SE HA DESCARGADO BIEN LA IMAGEN")
 
         # creamos y guardamos el comentario
         new_comment = Comment(
@@ -106,16 +105,24 @@ def cameras(request):
         camaras = utils.load_cameras_from_xml(source_path)
 
     # obtengo cámara aleatoria
-    random_camera = random.choice(Camera.objects.all())
+    if (Camera.objects.count() > 0):
+        random_camera = random.choice(Camera.objects.all())
 
-    camaras = Camera.objects.all().order_by('-num_comments')
-    context = {
-        'sources': DB_SOURCES,
-        'cameras': camaras,
-        'total_cameras': Camera.objects.count(),
-        'total_comments': Comment.objects.count(),
-        'random_camera': random_camera,
-    }
+        camaras = Camera.objects.all().order_by('-num_comments')
+        context = {
+            'sources': DB_SOURCES,
+            'cameras': camaras,
+            'total_cameras': Camera.objects.count(),
+            'total_comments': Comment.objects.count(),
+            'random_camera': random_camera,
+        }
+    else:
+        context = {
+            'sources': DB_SOURCES,
+            'total_cameras': Camera.objects.count(),
+            'total_comments': Comment.objects.count(),
+        }
+
     return render(request, "cameras.html", context)
 
 
@@ -173,7 +180,6 @@ def camera_json(request, id_camera):
             'latitude': camera.latitude,
             'longitude': camera.longitude,
             'num_comments': camera.num_comments,
-            # Agrega más campos según sea necesario
         }
         return JsonResponse(camera_data)
     except Camera.DoesNotExist:
