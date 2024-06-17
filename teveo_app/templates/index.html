@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} TeVeO - Página Principal {% endblock %}
 
@@ -20,7 +21,7 @@
                     {% if comment.image %}
                         <img src="data:image/jpeg;base64,{{ comment.image }}" alt="Imagen no disponible">
                     {% else %}
-                        <p>Imagen no disponible</p>
+                        <img src="{% static 'images/no_image.jpeg' %}" alt="NoImage" class="no image">
                     {% endif %}
                 </div>
             {% endfor %}

@@ -53,7 +53,6 @@ def comentario(request):
             username = request.session['username']
         else:
             username = "Anónimo"
-        print("USERNAME: ", username)
 
         if not id_camera:
             return HttpResponse("ID de la cámara no específicado")
@@ -66,7 +65,7 @@ def comentario(request):
         if image_bytes:
             image_base64 = base64.b64encode(image_bytes).decode('utf-8')
         if image_bytes == None:
-            print("NO SE HA DESCARGADO BIEN LA IMAGEN")
+            image_base64 = None
 
         # creamos y guardamos el comentario
         new_comment = Comment(
@@ -199,20 +198,35 @@ def help(request):
 @csrf_exempt
 def settings(request):
     if request.method == "POST":
-        print("ENTRO A POST")
         if "save_username" in request.POST:
-            print("ENTRO A username")
             new_username = request.POST.get("username")
             # Almacena el nombre del comentador en la sesión del usuario
             request.session['username'] = new_username
 
         elif "save_appearance" in request.POST:
-            print("ENTRO A appearance")
             font_size = request.POST.get("font_size")
             font_type = request.POST.get("font_type")
             # Guarda el tamaño y tipo de fuente en la sesión del usuario
             request.session['font_size'] = font_size
             request.session['font_type'] = font_type
+
+        elif "authorize-button" in request.POST:
+            if request.session.session_key != None:
+                dominio = request.get_host()
+                cookie = request.session.session_key
+                enlace = f"http://{dominio}/cambio/{cookie}"
+                auth_link = {
+                    'auth_link': enlace,
+                }
+                return JsonResponse(auth_link)
+            else:
+                context = {
+                    'session_key': "No",
+                    'total_cameras': Camera.objects.count(),
+                    'total_comments': Comment.objects.count(),
+                }
+
+                return render(request, "settings.html", context)
 
         else:
             logout(request)
@@ -225,3 +239,14 @@ def settings(request):
     }
 
     return render(request, "settings.html", context)
+
+
+def cambio(request, cookie):
+    response = redirect('/') # Función para redirigir a la págin principal
+    # Establezco la cookie
+    # set_cookie es el método para establecer la cookie en la respuesta de sesión
+    response.set_cookie(
+        key='sessionid', # nombre de la cookie de sesión
+        value=cookie, # valor de la cookie (especificado como parámetro en el enlace)
+    )
+    return response

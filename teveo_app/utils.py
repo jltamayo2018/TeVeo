@@ -100,6 +100,6 @@ def load_cameras_from_xml(data_source_path):
         cameras=extract_from_xml1(root)
     elif root_tag == "list":  # Formato del segundo archivo XML (listado2.xml)
         cameras=extract_from_xml2(root)
-    elif root_tag == "kml":
+    elif root_tag == "kml":  # Formato del listado de cámaras del Ayuntamiento de Madrid
         cameras=extract_from_kml(root, KML_NAMESPACE)
     return cameras

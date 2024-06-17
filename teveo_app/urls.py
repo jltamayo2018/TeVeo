@@ -10,4 +10,5 @@ urlpatterns = [
     path('ayuda', views.help, name='help'),
     path('config', views.settings, name='settings'),
     path('camaras/<str:id_camera>/camaras-json', views.camera_json, name='camera_json'),
+    path('cambio/<str:cookie>', views.cambio, name='cambio'),
 ]

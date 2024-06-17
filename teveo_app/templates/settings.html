@@ -35,6 +35,21 @@
 
     <hr>
 
+    <h2>Generar enlace de autorización</h2>
+
+    {% if session_key == "No" %}
+        <p style="color: red">Debes de haberte identificado primero</p>
+    {% else %}
+        <p>Debes de haberte identificado primero</p>
+    {% endif %}
+
+
+    <form action="" method="POST">
+        <button type="submit" name="authorize-button" id="authorize-button" class="authorize-button">Generar enlace</button>
+    </form>
+
+    <hr>
+
     <form action="" method="POST">
         <p>¿Cerrar sesión?</p>
         <button type="submit" name="delete_account" id="delete-account-btn" class="btn btn-danger">Eliminar Cuenta</button>
