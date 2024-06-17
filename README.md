@@ -68,7 +68,7 @@ Todas las páginas tienen:
 
 - Una **cabecera** con el título *TeVeO* y el nombre del comentador
 
-- Un **menú** desde el que puedes acceder a las distintas páginas
+- Un **menú** desde el que puedes acceder a las distintas páginas (no aparece la página en la que ya te encuentras)
 
 - Un **pie** que muestra el número de cámaras y comentarios que hay
 
