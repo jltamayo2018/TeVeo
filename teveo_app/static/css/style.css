@@ -267,3 +267,13 @@ footer {
 .like-button {
     margin-bottom: 10px; /* Espacio entre el botón y el contador de likes */
 }
+
+/* para mi página de error */
+.alert-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.alert p {
+    font-size: 1.1rem;
+}

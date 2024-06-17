@@ -27,11 +27,21 @@
         </header>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <a href="{% url 'index' %}" class="nav-link">Principal</a>
-            <a href="{% url 'camaras' %}" class="nav-link">Cámaras</a>
-            <a href="{% url 'settings' %}" class="nav-link">Configuración</a>
-            <a href="{% url 'help' %}" class="nav-link">Ayuda</a>
-            <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+            {% if pagina != "Principal" %}
+                <a href="{% url 'index' %}" class="nav-link">Principal</a>
+            {% endif %}
+            {% if pagina != "Cámaras" %}
+                <a href="{% url 'camaras' %}" class="nav-link">Cámaras</a>
+            {% endif %}
+            {% if pagina != "Configuración" %}
+                <a href="{% url 'settings' %}" class="nav-link">Configuración</a>
+            {% endif %}
+            {% if pagina != "Ayuda" %}
+                <a href="{% url 'help' %}" class="nav-link">Ayuda</a>
+            {% endif %}
+            {% if pagina != "Admin" %}
+                <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+            {% endif %}
         </nav>
 
         {% block content %}

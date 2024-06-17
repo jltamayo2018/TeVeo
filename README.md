@@ -1,4 +1,4 @@
-# ENTREGA CONVOCATORIA MAYO
+# ENTREGA CONVOCATORIA JUNIO
 
 # ENTREGA DE PRÁCTICA
 
@@ -20,18 +20,18 @@
 
 - En la **página principal** se muestra un listado de comentarios, donde se indica:
 	- el nombre de la cámara (enlace a dicha cámara)
-	- fecha del comentario
-	- autor
 	- el comentario
+	- autor
+	- fecha del comentario
 	- imagen de la cámara en el momento en que se puso el comentario
 
 - En la **página de cámaras** se muestra:
 	- listado de fuentes de datos, de donde se obtienen las cámaras
 	- listado de cámaras (con una imagen aleatoria de una de ellas al principio), se muestra su:
 		- id
+		- nombre
 		- enlace a la cámara estática
 		- enlace a la cámara dinámica
-		- nombre
 		- número de comentarios
 
 - En la **página estática de cada cámara** se muestra:
@@ -58,6 +58,7 @@
 - En la **página de configuración** se muestra:
 	- formulario para cambiar el nombre del comentador
 	- formulario para cambiar el tamaño y título de la fuente
+	- un botón para generar un enlace de autenticación (poniendo dicho enlace en la barra de búsqueda podrás iniciar sesión como estabas registrado)
 
 - En la **página de ayuda** se muestra información sobre el funcionamiento de la aplicación web.
 

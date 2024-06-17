@@ -24,6 +24,7 @@ DB_SOURCES = [
 def index(request):
     comments = Comment.objects.all().order_by('-date')
     context = {
+        'pagina': "Principal",
         'comments': comments,
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
@@ -45,28 +46,36 @@ def download_image(url_imagen):
 
 @csrf_exempt
 def comentario(request):
+    print(1)
     # en el caso de que se rellene el formulario de comentario
     if request.method == "POST":
+        print(2)
         id_camera = request.POST["id_camera"]
         comment_text = request.POST["comment_text"]
+        print(3)
         if 'username' in request.session:
             username = request.session['username']
+            print(4)
         else:
             username = "Anónimo"
+            print(5)
 
         if not id_camera:
             return HttpResponse("ID de la cámara no específicado")
+            print(6)
 
         # obtenemos la cámara correspondiente
         camera = Camera.objects.get(id=id_camera)
+        print(7)
 
         image_url = camera.img_camera
         image_bytes = download_image(image_url)
+        print(8)
         if image_bytes:
             image_base64 = base64.b64encode(image_bytes).decode('utf-8')
         if image_bytes == None:
             image_base64 = None
-
+        print(9)
         # creamos y guardamos el comentario
         new_comment = Comment(
             id_camera=camera,
@@ -76,23 +85,37 @@ def comentario(request):
             author=username,
         )
         new_comment.save()
-
+        print(10)
         camera.num_comments += 1
         camera.save()
 
         return redirect("/")
+    print(11)
 
     id_camera = request.GET["id_camera"]
+    print(12)
     if not id_camera:
         return HttpResponse("ID de la cámara no específicado")
-    camera = Camera.objects.get(id=id_camera)
+    print(13)
+    try:
+        camera = Camera.objects.get(id=id_camera)
+    except Camera.DoesNotExist:
+        context = {
+            'total_cameras': Camera.objects.count(),
+            'total_comments': Comment.objects.count(),
+            'motivo': "No existe la cámara solicitada",
+        }
+        return render(request, "error.html", context)
+    print(14)
     context = {
         'camera': camera,
         'current_date': datetime.now(),
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
     }
+    print(14)
     return render(request, "comentario.html", context)
+    print(15)
 
 
 @csrf_exempt
@@ -109,6 +132,7 @@ def cameras(request):
 
         camaras = Camera.objects.all().order_by('-num_comments')
         context = {
+            'pagina': "Cámaras",
             'sources': DB_SOURCES,
             'cameras': camaras,
             'total_cameras': Camera.objects.count(),
@@ -117,6 +141,7 @@ def cameras(request):
         }
     else:
         context = {
+            'pagina': "Cámaras",
             'sources': DB_SOURCES,
             'total_cameras': Camera.objects.count(),
             'total_comments': Comment.objects.count(),
@@ -142,7 +167,12 @@ def camera_detail(request, id_camera):
     try:
         camera = Camera.objects.get(id=id_camera)
     except Camera.DoesNotExist:
-        return HttpResponse("No existe la cámara")
+        context = {
+            'total_cameras': Camera.objects.count(),
+            'total_comments': Comment.objects.count(),
+            'motivo': "No existe la cámara solicitada",
+        }
+        return render(request, "error.html", context)
 
     context = {
         'camera': camera,
@@ -158,7 +188,12 @@ def camera_dyn(request, id_camera):
     try:
         camera = Camera.objects.get(id=id_camera)
     except Camera.DoesNotExist:
-        return HttpResponse("No existe la cámara")
+        context = {
+            'total_cameras': Camera.objects.count(),
+            'total_comments': Comment.objects.count(),
+            'motivo': "No existe la cámara solicitada",
+        }
+        return render(request, "error.html", context)
 
     context = {
         'camera': camera,
@@ -188,6 +223,7 @@ def camera_json(request, id_camera):
 
 def help(request):
     context = {
+        'pagina': "Ayuda",
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
     }
@@ -221,6 +257,7 @@ def settings(request):
                 return JsonResponse(auth_link)
             else:
                 context = {
+                    'pagina': "Configuración",
                     'session_key': "No",
                     'total_cameras': Camera.objects.count(),
                     'total_comments': Comment.objects.count(),
@@ -234,6 +271,7 @@ def settings(request):
 
 
     context = {
+        'pagina': "Configuración",
         'total_cameras': Camera.objects.count(),
         'total_comments': Comment.objects.count(),
     }
