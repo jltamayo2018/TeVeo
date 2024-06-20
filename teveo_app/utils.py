@@ -89,17 +89,23 @@ def extract_from_kml(root, namespace):
 
 
 def load_cameras_from_xml(data_source_path):
-    tree = ET.parse(data_source_path) # cargamos el archivo XML
-    root = tree.getroot() # obtenemos el elemento raíz del árbol xml
-
+    # cargamos el archivo XML para analizarlo y cargarlo, tree representa la estructura completa del XML
+    tree = ET.parse(data_source_path)
+    # obtenemos el elemento raíz del árbol xml
+    root = tree.getroot()
+    # guardamos el nombre de la etiqueta raiz del XML como una cadena de texto
     root_tag = root.tag.split("}")[-1]
+    print("ROOT_TAG:", root_tag)
 
     # lista para almacenar las cámaras extraídas
     cameras = []
-    if root_tag == "camaras":  # Formato del primer archivo XML (listado1.xml)
+    # Formato del primer archivo XML (listado1.xml)
+    if root_tag == "camaras":
         cameras=extract_from_xml1(root)
-    elif root_tag == "list":  # Formato del segundo archivo XML (listado2.xml)
+    # (listado2.xml)
+    elif root_tag == "list":
         cameras=extract_from_xml2(root)
-    elif root_tag == "kml":  # Formato del listado de cámaras del Ayuntamiento de Madrid
+    # CCTV.kml
+    elif root_tag == "kml":
         cameras=extract_from_kml(root, KML_NAMESPACE)
     return cameras
