@@ -36,6 +36,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
+# devuelve la imagen ya en formato base64 y decodificada
 def download_image(url_imagen):
     """Download image and return it as bytes"""
     # me guardo en request la solicitud HTTP que se envia para obtener la imagen, a partir de la URL
@@ -44,31 +45,18 @@ def download_image(url_imagen):
         # abro la URL y devuelvo la respuesta
         with urllib.request.urlopen(request) as response:
             # leo los datos de la respuesta y los almaceno
-            image = response.read()
+            image_bytes = response.read()
+
+            if image_bytes:
+                # codificamos la imagen en formato Base64
+                image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+            if image_bytes == None:
+                image_base64 = None
+
     except urllib.error.URLError:
         # si hay algun error devuelvo None y lo manejo luego
         return None
-    return image
-
-
-#función exclusiva para la cámara dinámica
-def descargar_y_devolver_imagen(request, camera_id):
-    # obtengo la cámara
-    camera = Camera.objects.get(id=camera_id)
-    # obtengo su url
-    url_imagen = camera.img_camera
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0'
-    }
-    # respuesta de la solicitud HTTP
-    response = requests.get(url_imagen, headers=headers)
-
-    # convierte el contenido binario de la respuesta a una cadena codificada en base 64
-    imagen_base64 = base64.b64encode(response.content).decode('utf-8')
-    # devuelvo una etiqueta html para mostrar la imagen en el html de la imagen dinámica
-    devuelvo = f'<img src="data:image/jpeg;base64,{imagen_base64}" alt="Imagen de la cámara" class="camara-img">'
-
-    return HttpResponse(devuelvo, content_type="text/html")
+    return image_base64
 
 
 # función para manejar el método GET de comentario
@@ -128,19 +116,15 @@ def manage_comment_post(request):
     camera = Camera.objects.get(id=id_camera)
     # obtenemos su url
     image_url = camera.img_camera
-    # descargamos la imagen
-    image_bytes = download_image(image_url)
-    if image_bytes:
-        # codificamos la imagen en formato Base64
-        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
-    if image_bytes == None:
-        image_base64 = None
+    # descargamos la imagen, devuelve ya la cadena de caracteres en base64 y decodificada
+    image = download_image(image_url)
+
     # creamos y guardamos el comentario
     new_comment = Comment(
         id_camera=camera,
         date=datetime.now(),
         text=comment_text,
-        image=image_base64,
+        image=image,
         author=username,
     )
     new_comment.save()

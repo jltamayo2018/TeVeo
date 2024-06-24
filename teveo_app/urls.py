@@ -11,5 +11,4 @@ urlpatterns = [
     path('config', views.settings, name='settings'),
     path('camaras/<str:id_camera>/camaras-json', views.camera_json, name='camera_json'),
     path('cambio/<str:cookie>', views.cambio, name='cambio'),
-    path("descargar_imagen/<str:camera_id>/",views.descargar_y_devolver_imagen, name = 'descargar'),
 ]
