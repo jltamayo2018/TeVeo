@@ -2,12 +2,15 @@ import xml.etree.ElementTree as ET # para procesar archivos XML
 from .models import Camera
 import re
 
+# Definimos el espacio de nombres utilizado en los archivos KML para referirse a elementos dentro de estos archivos.
 KML_NAMESPACE = {"kml": "http://earth.google.com/kml/2.2"}
 
 def extract_from_xml1(root):
     cameras = []
 
+    # encontramos los elementos 'camara' dentro del xml
     for camara in root.findall("camara"):
+        # obtenemos los subelementos que nos interesan
         camera_id = camara.find("id").text
         img_camera = camara.find("src").text
         name = camara.find("lugar").text
@@ -15,7 +18,7 @@ def extract_from_xml1(root):
         latitude = float(coordinates[1])
         longitude = float(coordinates[0])
 
-        # Crear o actualizar la cámara
+        # Creamos o actualizamos la cámara si ya existe
         camera, created = Camera.objects.update_or_create(
             id=camera_id,
             defaults={
@@ -108,4 +111,5 @@ def load_cameras_from_xml(data_source_path):
     # CCTV.kml
     elif root_tag == "kml":
         cameras=extract_from_kml(root, KML_NAMESPACE)
+
     return cameras
