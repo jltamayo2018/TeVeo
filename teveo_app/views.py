@@ -11,6 +11,7 @@ import base64
 import random
 from django.contrib.auth import logout
 from django.http import JsonResponse
+import requests
 
 BASE_DIR = settings.BASE_DIR
 
@@ -44,10 +45,30 @@ def download_image(url_imagen):
         with urllib.request.urlopen(request) as response:
             # leo los datos de la respuesta y los almaceno
             image = response.read()
-    except urllib.error.URLError as e:
+    except urllib.error.URLError:
         # si hay algun error devuelvo None y lo manejo luego
         return None
     return image
+
+
+#función exclusiva para la cámara dinámica
+def descargar_y_devolver_imagen(request, camera_id):
+    # obtengo la cámara
+    camera = Camera.objects.get(id=camera_id)
+    # obtengo su url
+    url_imagen = camera.img_camera
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0'
+    }
+    # respuesta de la solicitud HTTP
+    response = requests.get(url_imagen, headers=headers)
+
+    # convierte el contenido binario de la respuesta a una cadena codificada en base 64
+    imagen_base64 = base64.b64encode(response.content).decode('utf-8')
+    # devuelvo una etiqueta html para mostrar la imagen en el html de la imagen dinámica
+    devuelvo = f'<img src="data:image/jpeg;base64,{imagen_base64}" alt="Imagen de la cámara" class="camara-img">'
+
+    return HttpResponse(devuelvo, content_type="text/html")
 
 
 # función para manejar el método GET de comentario

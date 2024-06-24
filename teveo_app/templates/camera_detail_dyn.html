@@ -12,12 +12,7 @@
     <a href="{% url 'camera_detail' camera.id %}" class="camara-link">Página estática de la cámara {{ camera.id }}</a>
     <a href="{% url 'camera_json' camera.id %}" class="camara-json-link">Enlace a la cámara JSON {{ camera.id }}</a>
     <hr>
-    <div hx-get="{{ camera.img_camera }}" hx-swap="innerHTML" hx-trigger="every 3s" id="camera-image">
-        {% if camera.img_camera %}
-            <img src="{{ camera.img_camera }}" alt="Imagen de la cámara" class="camara-img">
-        {% else %}
-            <p class="camara-no-img">No hay imagen disponible</p>
-        {% endif %}
+    <div hx-get="{% url 'descargar' camera.id %}" hx-swap="innerHTML" hx-trigger="load, every 30s" id="camera-image">
     </div>
     <hr>
     <a href="{% url 'comentario' %}?id_camera={{ camera.id }}" class="comentario-link">¡Anímate y deja un comentario!</a>
