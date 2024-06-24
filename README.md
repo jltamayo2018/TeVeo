@@ -8,8 +8,8 @@
 * Titulación: Ingeniería Telemática
 * Cuenta en laboratorios: jltamayo
 * Cuenta URJC: jl.tamayo.2018
-* Video básico (url): https://youtu.be/B5K6URiHbZ8
-* Video parte opcional (url): https://youtu.be/L3Lg55wVsQg
+* Video básico (url): https://youtu.be/qBI-2Ldci2k
+* Video parte opcional (url): https://youtu.be/zjN8kxjJjtg
 * Despliegue (url): https://joseluistamayo.pythonanywhere.com
 * Contraseñas: Como e indica en la práctica, NO hay autenticación de usuarios, por lo que NO hay contraseñas
 * Cuenta Admin Site: admin/admin
