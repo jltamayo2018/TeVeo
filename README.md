@@ -133,7 +133,8 @@ El sistema organiza la información por cámaras, mostrando tanto sus datos como
 - 👍 Sistema de votos (*likes*)
 - 🔐 Generación de enlace de autenticación
 - 📄 Página de ayuda
-<!-->
+
+<!--
 ---
 
 ## 🖥️ Capturas de pantalla
