@@ -152,7 +152,7 @@ _(Añade aquí 2–3 capturas, por ejemplo:)_
 
 1. Clonar el repositorio:
 
-    git clone https://github.com/tuusuario/TeVeo.git  
+    git clone https://github.com/jltamayo2018/TeVeo.git  
     cd TeVeo
 
 2. Crear entorno virtual:
